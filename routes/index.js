@@ -22,7 +22,7 @@ exports.uploadPicture = function(req, res) {
         if(err) {
           res.end('error');
         } else {
-          res.send(hashids.encrypt(image.id));
+          res.send({id: hashids.encrypt(image.id)});
         }
       });
     });
