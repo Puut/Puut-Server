@@ -42,8 +42,15 @@ app.configure('development', function(){
   app.use(express.errorHandler());
 });
 
-app.get('/', routes.index);
-app.post('/upload', routes.uploadPicture);
+var auth = express.basicAuth(function(user, pass) {
+  if(config.useAuth) {
+    return user === config.username && pass === config.password;
+  } else {
+    return true;
+  }
+});
+app.get('/', auth, routes.index);
+app.post('/upload', auth, routes.uploadPicture);
 app.get('/:id.:format', routes.getPicture);
 
 http.createServer(app).listen(app.get('port'), function(){

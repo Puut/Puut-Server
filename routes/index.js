@@ -7,7 +7,7 @@ var Hashids = require('hashids')
  */
 
 exports.index = function(req, res) {
-  res.render('index', { title: 'Express' });
+  res.render('index', { title: 'Puut' });
 };
 
 exports.uploadPicture = function(req, res) {  
@@ -22,7 +22,6 @@ exports.uploadPicture = function(req, res) {
         if(err) {
           res.end('error');
         } else {
-          console.log(hashids.encrypt(image.id));
           res.send(hashids.encrypt(image.id));
         }
       });
