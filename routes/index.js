@@ -42,3 +42,7 @@ exports.getPicture = function(req, res) {
     }
   });
 }
+
+exports.info = function(req, res) {
+  res.end('PUUT');
+}

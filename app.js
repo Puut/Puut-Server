@@ -52,6 +52,7 @@ var auth = express.basicAuth(function(user, pass) {
 app.get('/', auth, routes.index);
 app.post('/upload', auth, routes.uploadPicture);
 app.get('/:id.:format', routes.getPicture);
+app.get('/info', auth, routes.info);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
