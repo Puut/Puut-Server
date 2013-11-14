@@ -4,11 +4,12 @@
  */
 
 var express = require('express')
-  , routes = require('./routes')
-  , http = require('http')
-  , path = require('path')
-  , config = require('./config.json')
-  , orm = require('orm');
+  , routes  = require('./routes')
+  , http    = require('http')
+  , path    = require('path')
+  , config  = require('./config.json')
+  , orm     = require('orm')
+  , paging  = require('orm-paging');
 
 var app = express();
 
@@ -19,13 +20,18 @@ app.configure(function(){
   
   app.use(orm.express(process.env.DATABASE_URL || "sqlite://database.db", {
     define: function(db, models, next) {
+      
+      db.use(paging);
+      
       models.image = db.define('image', {
         content: { type: "binary" },
         contentType: { type: "text" },
-        thumbnail: { type: "binary" }
+        thumbnail: { type: "binary" },
+        fileType: { type: "text" },
+        thumbnailType: { type: "text" }
       });
       
-      models.image.sync();
+      db.sync();
       
       next();
     }

@@ -8,7 +8,23 @@ var Hashids   = require('hashids')
  */
 
 exports.index = function(req, res) {
-  res.render('index', { title: 'Puut' });
+  
+  var page = req.query.page || 0;
+  req.models.image.pages(function (err, pages) {
+    if(page > pages) page = pages;
+    
+    req.models.image.page(page).order('id').run(function(err, images) {
+      var finalImages = [];
+      console.log(err);
+      images.forEach(function(img) {
+        img.hashid = hashids.encrypt(img.id);
+        finalImages.push(img);
+      });
+    
+      res.render('index', { title: 'Puut', images: finalImages, totalPages: pages});
+    });
+  });
+  
 };
 
 /*
@@ -20,15 +36,19 @@ exports.uploadPicture = function(req, res) {
   
   if(typeof file !== 'undefined' && file.size > 0) {
     fs.readFile(file.path, function(err, data) {
-      easyimage.thumbnail({ src: file.path, dst: '/tmp/hantz.jpg', width:128, height:128, x:0, y:0},
+      var thumbnailFileName = '/tmp/hantz.jpg';
+      
+      easyimage.thumbnail({ src: file.path, dst: thumbnailFileName, width:128, height:128, x:0, y:0},
         function(err, image) {
           if (err) { res.end('error'); console.log(err); }
           else {
-            fs.readFile('/tmp/hantz.jpg', function(errThumb, dataThumb) {
+            fs.readFile(thumbnailFileName, function(errThumb, dataThumb) {
               req.models.image.create({
                 contentType: file.type,
                 content: data,
-                thumbnail: dataThumb
+                thumbnail: dataThumb,
+                thumbnailType: "jpg",
+                
               }, function(err, image) {
                 if(err) {
                   console.log(err);
@@ -58,7 +78,8 @@ exports.getPicture = function(req, res) {
     if(err) {
       res.render('404');
     } else {
-      res.set('Content-Type', image.contentType);
+      res.set('Content-Type', image.contentType);         
+      res.set('Content-Disposition', 'inline');
       res.end(image.content);
     }
   });
@@ -75,6 +96,7 @@ exports.getThumbnail = function(req, res) {
       res.render('404');
     } else {
       res.set('Content-Type', image.contentType);
+      res.set('Content-Disposition', 'inline');
       res.end(image.thumbnail);
     }
   });
