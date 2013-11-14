@@ -21,7 +21,8 @@ app.configure(function(){
     define: function(db, models, next) {
       models.image = db.define('image', {
         content: { type: "binary" },
-        contentType: { type: "text" }
+        contentType: { type: "text" },
+        thumbnail: { type: "binary" }
       });
       
       models.image.sync();
