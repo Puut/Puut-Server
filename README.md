@@ -8,6 +8,7 @@ You have to have `nodejs` installed. Do this via your preferred packet manager o
 Now clone this repo to wherever you want via `git clone https://github.com/Puut/Puut-Server.git`. Go into the new directory and run `npm install` there, all dependencies will be downloaded automatically. 
 
 You may now change the port and database of Puut, by setting the PORT and DATABASE_URL environment variables.
+
 	export PORT=1234
 	export DATABASE_URL=sqlite://puut.db
 
@@ -24,6 +25,7 @@ First perform an installation as described above. You may want a port in the fir
 Another way is to add a subdomain and forward the port internally:
 Create a folder for the subdomain by typing `mkdir /var/www/virtual/$USER/puut.$USER.$HOST.uberspace.de` (replace $USER with username and $HOST with hostname).
 Create a `.htaccess` there and fill it with 
+
 	RewriteEngine On
 	RewriteRule (.*) http://localhost:3000/$1 [P]
 and save it. Maybe you have to adjust the port for the server and in the .htaccess as the port 3000 is already in use.
@@ -33,12 +35,14 @@ Now it gets interesting. Do you want your Puut-Server to start automatically and
 
 If you haven't done this before, run `uberspace-setup-svscan` once
 `cd` into your Puut-Server directory. Create a file called `run`. It should contain:
+
 	#!/bin/sh
 	export PORT=3001
 	exec node ~/Puut-Server/app 2>&1
 This ensures that your server is always running on the same port by setting $PORT before launching the server. You may have to adjust the path to the server.
 
 Now create a `log` directory and create a `run` file there containing
+
 	#!/bin/sh
 	exec multilog t ./main
 This enables logging of output.
