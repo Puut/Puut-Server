@@ -6,3 +6,18 @@ body {
 a {
   color: #00B7FF;
 }
+
+a img {
+  border-width: 1px;
+  border-style: solid;
+  border-color: black;
+}
+
+h1 {
+  text-align: center;
+}
+
+.buttons {
+  text-align: center;
+  margin: 0 auto;
+}

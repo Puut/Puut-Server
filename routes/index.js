@@ -9,7 +9,7 @@ var Hashids   = require('hashids')
 
 exports.index = function(req, res) {
   
-  var page = req.query.page || 0;
+  var page = req.query.page || 1;
   req.models.image.pages(function (err, pages) {
     if(page > pages) page = pages;
     

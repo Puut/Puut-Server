@@ -1,15 +1,24 @@
 extends layout
 
 block content
-  h1= title
-  p Hey there! To use Puut, you have to install the Desktop-Client and connect it with this instance.
-  p For your convenience, here's a list of images you uploaded to this Puut-instance: 
-  ul
-    each image in images
-      li
-        a(href=image.hashid + '.png')
-          img(src='thumb/' + image.hashid + '.png')
-  if page > 1
-    a(href='?page=' + previousPage) Previous Page
-  if page < totalPages
-    a(href='?page=' + nextPage) Next Page
+  .row
+    .small-3.small-centered.columns
+      h1= title
+  .row
+    .large-12.columns
+      p Hey there! To use Puut, you have to install the Desktop-Client and connect it with this instance.
+      p For your convenience, here's a list of images you uploaded to this Puut-instance: 
+      ul.small-block-grid-5
+        each image in images
+          li
+            a(href=image.hashid + '.png')
+              img(src='thumb/' + image.hashid + '.png')
+  .row
+    .small-4.small-centered.columns.buttons
+      ul.button-group.round
+        if page > 1
+          li
+            a(href='?page=' + previousPage, class="button") Previous Page
+        if page < totalPages
+          li
+            a(href='?page=' + nextPage, class="button") Next Page
