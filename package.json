@@ -10,6 +10,7 @@
     "jade": "*",
     "orm": "*",
     "hashids": "*",
-    "sqlite3": "2.1.7"
+    "sqlite3": "2.1.7",
+    "easyimage": "*"
   }
 }

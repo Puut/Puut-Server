@@ -1,6 +1,7 @@
-var Hashids = require('hashids')
-  , hashids = new Hashids("Käsebrot", 4)
-  , fs      = require('fs');
+var Hashids   = require('hashids')
+  , hashids   = new Hashids("Käsebrot", 4)
+  , fs        = require('fs')
+  , easyimage = require('easyimage');
 
 /*
  * GET home page.
