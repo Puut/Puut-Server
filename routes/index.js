@@ -21,7 +21,7 @@ exports.index = function(req, res) {
         finalImages.push(img);
       });
     
-      res.render('index', { title: 'Puut', images: finalImages, totalPages: pages});
+      res.render('index', { title: 'Puut', images: finalImages, page: page, previousPage: parseInt(page) - 1, nextPage: parseInt(page) + 1, totalPages: pages});
     });
   });
   

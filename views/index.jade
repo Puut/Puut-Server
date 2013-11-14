@@ -7,4 +7,9 @@ block content
   ul
     each image in images
       li
-        img(src='thumb/' + image.hashid + '.png')
+        a(href=image.hashid + '.png')
+          img(src='thumb/' + image.hashid + '.png')
+  if page > 1
+    a(href='?page=' + previousPage) Previous Page
+  if page < totalPages
+    a(href='?page=' + nextPage) Next Page
