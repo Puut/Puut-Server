@@ -53,6 +53,7 @@ var auth = express.basicAuth(function(user, pass) {
 app.get('/', auth, routes.index);
 app.post('/upload', auth, routes.uploadPicture);
 app.get('/:id.:format', routes.getPicture);
+app.get('/thumb/:id.:format', routes.getThumbnail);
 app.get('/info', auth, routes.info);
 
 http.createServer(app).listen(app.get('port'), function(){

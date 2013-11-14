@@ -20,16 +20,28 @@ exports.uploadPicture = function(req, res) {
   
   if(typeof file !== 'undefined' && file.size > 0) {
     fs.readFile(file.path, function(err, data) {
-      req.models.image.create({
-        contentType: file.type,
-        content: data
-      }, function(err, image) {
-        if(err) {
-          res.end('error');
-        } else {
-          res.send({id: hashids.encrypt(image.id)});
+      easyimage.thumbnail({ src: file.path, dst: '/tmp/hantz.jpg', width:128, height:128, x:0, y:0},
+        function(err, image) {
+          if (err) { res.end('error'); console.log(err); }
+          else {
+            fs.readFile('/tmp/hantz.jpg', function(errThumb, dataThumb) {
+              req.models.image.create({
+                contentType: file.type,
+                content: data,
+                thumbnail: dataThumb
+              }, function(err, image) {
+                if(err) {
+                  console.log(err);
+                  res.end('error');
+                } else {
+                  res.send({id: hashids.encrypt(image.id)});
+                }
+              });
+            });
+          }
         }
-      });
+      );
+      
     });
   } else {
     res.end('error');
@@ -51,6 +63,22 @@ exports.getPicture = function(req, res) {
     }
   });
 }
+
+/*
+ * GET a thumbnail
+ */
+
+exports.getThumbnail = function(req, res) {
+  var id = hashids.decrypt(req.params.id);
+  req.models.image.get(parseInt(id), function(err, image) {
+    if(err) {
+      res.render('404');
+    } else {
+      res.set('Content-Type', image.contentType);
+      res.end(image.thumbnail);
+    }
+  });
+};
 
 /*
  * GET info 'bout the server
