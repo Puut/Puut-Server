@@ -10,6 +10,10 @@ exports.index = function(req, res) {
   res.render('index', { title: 'Puut' });
 };
 
+/*
+ * POST an image
+ */
+
 exports.uploadPicture = function(req, res) {  
   var file = req.files.image;
   
@@ -31,6 +35,10 @@ exports.uploadPicture = function(req, res) {
   }
 }
 
+/*
+ * GET an image
+ */
+
 exports.getPicture = function(req, res) {
   var id = hashids.decrypt(req.params.id);
   req.models.image.get(parseInt(id), function(err, image) {
@@ -42,6 +50,10 @@ exports.getPicture = function(req, res) {
     }
   });
 }
+
+/*
+ * GET info 'bout the server
+ */
 
 exports.info = function(req, res) {
   res.end('PUUT');
