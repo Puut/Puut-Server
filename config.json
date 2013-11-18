@@ -1,5 +1,5 @@
 {
-    "useAuth": true,
+    "useAuth": false,
     "username": "hanz",
     "password": "ralfried"
 }

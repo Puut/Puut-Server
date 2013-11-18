@@ -15,7 +15,6 @@ exports.index = function(req, res) {
     
     req.models.image.page(page).order('id').run(function(err, images) {
       var finalImages = [];
-      console.log(err);
       images.forEach(function(img) {
         img.hashid = hashids.encrypt(img.id);
         finalImages.push(img);
