@@ -28,6 +28,12 @@ exports.index = function(req, res) {
 };
 
 /*
+ * GET the uploading page
+ */
+exports.uploadingPage = function(req, res) {
+  res.render('upload');
+}
+/*
  * POST an image
  */
 

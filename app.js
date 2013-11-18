@@ -56,7 +56,9 @@ var auth = express.basicAuth(function(user, pass) {
     return true;
   }
 });
+
 app.get('/', auth, routes.index);
+app.get('/upload', auth, routes.uploadingPage);
 app.post('/upload', auth, routes.uploadPicture);
 app.get('/:id.:format', routes.getPicture);
 app.get('/thumb/:id.:format', routes.getThumbnail);
