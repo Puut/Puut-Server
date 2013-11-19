@@ -58,3 +58,57 @@ describe('GET /', function() {
   });
 });
 
+describe('GET / JSON', function() {
+  it('should respond with json', function(done) {
+    request(puutWithoutAuth)
+      .get('/')
+      .set('Accept', 'application/json')
+      .expect('Content-Type', /json/)
+      .expect(200, done);
+  });
+
+  it('should respond with json and with auth', function(done) {
+    request(puutWithoutAuth)
+      .get('/')
+      .set('Accept', 'application/json')
+      .expect('Content-Type', /json/)
+      .auth('hanß', 'ralf')
+      .expect(200, done);
+  });
+
+  it('should respond with json and with correct auth', function(done) {
+    request(puutWithoutAuth)
+      .get('/')
+      .set('Accept', 'application/json')
+      .expect('Content-Type', /json/)
+      .auth('test', 'test')
+      .expect(200, done);
+  });
+
+  it('should fail without auth', function(done) {
+    request(puutWithAuth)
+      .get('/')
+      .set('Accept', 'application/json')
+      .expect('Content-Type', /json/)
+      .expect(401, done);
+  });
+
+  it('should fail with wrong auth', function(done) {
+    request(puutWithAuth)
+      .get('/')
+      .set('Accept', 'application/json')
+      .auth('heinz', 'peda')
+      .expect('Content-Type', /json/)
+      .expect(401, done);
+  });
+
+  it('should respond with json and auth', function(done) {
+    request(puutWithAuth)
+      .get('/')
+      .set('Accept', 'application/json')
+      .auth('test', 'test')
+      .expect('Content-Type', /json/)
+      .expect(200, done);
+  });
+});
+
