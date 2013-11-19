@@ -15,3 +15,5 @@ exports.puutWithoutAuth = puutApp({
   password: "",
   databaseUrl: testDatabase
 });
+
+process.env.NODE_ENV = 'test';
