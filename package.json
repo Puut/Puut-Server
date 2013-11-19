@@ -1,7 +1,11 @@
 {
   "name": "puush-server",
-  "version": "0.0.1",
-  "private": true,
+  "version": "0.9.0",
+  "repository" : {
+    "type" : "git",
+    "url" : "https://github.com/Puut/Puut-Server.git"
+  },
+  "private": false,
   "scripts": {
     "start": "node puut",
     "test": "make test",
@@ -12,17 +16,17 @@
   },
   "dependencies": {
     "express": "3.1.0",
-    "jade": "*",
-    "orm": "*",
-    "hashids": "*",
+    "jade": "~0.35",
+    "orm": "~2.1",
+    "hashids": "~0.3",
     "sqlite3": "2.1.7",
-    "easyimage": "*",
-    "orm-paging": "*"
+    "easyimage": "~0.1",
+    "orm-paging": "~0.0"
   },
   "devDependencies": {
-    "mocha": "*",
-    "supertest": "*",
-    "blanket": "*",
-    "should": "*"
+    "mocha": "~1.14",
+    "supertest": "~0.8",
+    "blanket": "~1.1",
+    "should": "~2.1"
   }
 }
