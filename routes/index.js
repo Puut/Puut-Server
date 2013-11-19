@@ -12,11 +12,13 @@ exports.index = function(req, res) {
     
     req.models.image.page(page).order('id').run(function(err, images) {
       var finalImages = [];
-      images.forEach(function(img) {
-        img.hashid = hashids.encrypt(img.id);
+      if(images) {
+        images.forEach(function(img) {
+          img.hashid = hashids.encrypt(img.id);
 
-        finalImages.push({hashid: img.hashid, contentType: img.contentType});
-      });
+          finalImages.push({hashid: img.hashid, contentType: img.contentType});
+        });
+      }
       if(req.accepts("json, html") == "json") {
         res.type("json");
         res.send(finalImages);
