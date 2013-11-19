@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node puut",
-    "test": "mocha -R spec",
+    "test": "make test",
     "blanket": {
         "pattern": ".",
         "data-cover-never": ["node_modules", "test", "public"]

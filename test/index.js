@@ -5,7 +5,7 @@ var request = require('supertest')
   
 var puutWithAuth = common.puutWithAuth;
 
-var puutWithoutAuth = common.puutWithoutAuth
+var puutWithoutAuth = common.puutWithoutAuth;
 
 describe('Index', function(){
   describe('GET /', function() {
