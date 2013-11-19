@@ -1,3 +1,7 @@
+process.env.NODE_ENV = 'test';
+
+require('blanket');
+
 var puutApp = require('../app.js');
 
 var testDatabase = "sqlite://test.db";
@@ -15,5 +19,3 @@ exports.puutWithoutAuth = puutApp({
   password: "",
   databaseUrl: testDatabase
 });
-
-process.env.NODE_ENV = 'test';
