@@ -1,5 +1,6 @@
 {
-    "useAuth": false,
-    "username": "hanz",
-    "password": "ralfried"
+  "useAuth": false,
+  "username": "hanz",
+  "password": "ralfried",
+  "databaseUrl": "sqlite://database.db"
 }

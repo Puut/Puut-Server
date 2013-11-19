@@ -17,7 +17,7 @@ module.exports = function(config) {
     app.set('views', __dirname + '/views');
     app.set('view engine', 'jade');
   
-    app.use(orm.express(process.env.DATABASE_URL || "sqlite://database.db", {
+    app.use(orm.express(config.databaseUrl || "sqlite://database.db", {
       define: function(db, models, next) {
       
         db.use(paging);
