@@ -1,7 +1,13 @@
 extends layout
 
 block content
-  form(action='/upload', method="post", enctype="multipart/form-data")
-    input(type="file", name="image", accept="image/*")
-    button(type="submit") Upload
+  .row
+    .small-4.small-centered.columns
+      h1 Upload an Image
+  .row
+    .large-12.columns
+        p To Upload an Image, simply select it with the Filechooser down here and click the "Upload" Button:
+        form(action='/upload', method="post", enctype="multipart/form-data")
+          input(type="file", name="image", accept="image/*")
+          button(type="submit") Upload
       

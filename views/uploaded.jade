@@ -1,4 +1,12 @@
 extends layout
 
 block content
-  h1= id
+  .row
+    .small-6.small-centered.columns
+      h1 Your Image was uploaded!
+  .row
+    .large-12.columns.small-centered
+      .large-4.columns.small-centered
+        input(type='text', value=url, onfocus="this.select()", onMouseUp="return false", id="url")
+  script.
+    $("#url").focus();
