@@ -30,7 +30,7 @@ exports.uploadPicture = function(req, res) {
                   console.log(err);
                   res.end('error');
                 } else {
-                  if(req.accept("html, json") == "json") {
+                  if(req.accepts("html, json") == "json") {
                     res.type("json");
                     res.send({id: hashids.encrypt(image.id)});
                   } else {
@@ -45,7 +45,11 @@ exports.uploadPicture = function(req, res) {
     
     });
   } else {
-    res.end('error');
+    if(req.accepts("html, json") == "json") {
+      res.send(400, {error: 'Image is missing!' });
+    } else {
+      res.send(400, 'Image is missing!');
+    }
   }
 }
 
