@@ -19,7 +19,7 @@
     "jade": "~0.35",
     "orm": "~2.1",
     "hashids": "~0.3",
-    "sqlite3": "2.1.7",
+    "sqlite3": "~2.1.19",
     "easyimage": "~0.1",
     "orm-paging": "~0.0"
   },
