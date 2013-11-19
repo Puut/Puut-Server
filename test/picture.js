@@ -34,7 +34,7 @@ describe('Pictures', function() {
   });
   
   describe('POST /upload with image HTML', function() {
-    it('should respond with json', function(done) {
+    it('should respond with html', function(done) {
       request(puutWithAuth)
         .post('/upload')
         .attach('image', 'test/fixtures/screenshot.png')
