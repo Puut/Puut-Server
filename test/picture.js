@@ -12,7 +12,6 @@ describe('Pictures', function() {
       request(puutWithAuth)
         .get('/')
         .set('Accept', 'text/html')
-        .expect('Content-Type', /html/)
         .expect(401, done);
     });
     
@@ -21,7 +20,6 @@ describe('Pictures', function() {
         .get('/')
         .set('Accept', 'text/html')
         .auth('ralf', 'dietmar')
-        .expect('Content-Type', /html/)
         .expect(401, done);
     });
   })

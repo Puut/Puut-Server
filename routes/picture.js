@@ -30,7 +30,12 @@ exports.uploadPicture = function(req, res) {
                   console.log(err);
                   res.end('error');
                 } else {
-                  res.send({id: hashids.encrypt(image.id)});
+                  if(req.accept("html, json") == "json") {
+                    res.type("json");
+                    res.send({id: hashids.encrypt(image.id)});
+                  } else {
+                    res.render('uploaded', {id: hashids.encrypt(image.id)});
+                  }
                 }
               });
             });
