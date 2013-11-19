@@ -7,10 +7,9 @@ This is the Puut server. Puut is a decentral and quick screenshot sharing servic
 You have to have `nodejs` installed. Do this via your preferred packet manager on your server, but beware that Ubuntu by now does not include the newest version of `nodejs` in their package sources, which might be an issue. If you encounter errors running Puut, try updating `nodejs`.
 Now clone this repo to wherever you want via `git clone https://github.com/Puut/Puut-Server.git`. Go into the new directory and run `npm install` there, all dependencies will be downloaded automatically. 
 
-You may now change the port and database of Puut, by setting the PORT and DATABASE_URL environment variables.
+You may now change the port and database of Puut, by setting the PORT environment variable. The Database-URL can be specified in the config.json.
 
 	export PORT=1234
-	export DATABASE_URL=sqlite://puut.db
 
 If this is not done, Puut will run on Port 3000 by default.
 
