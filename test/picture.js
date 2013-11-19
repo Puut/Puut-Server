@@ -33,6 +33,18 @@ describe('Pictures', function() {
     });
   });
   
+  describe('POST /upload with image HTML', function() {
+    it('should respond with json', function(done) {
+      request(puutWithAuth)
+        .post('/upload')
+        .attach('image', 'test/fixtures/screenshot.png')
+        .auth('test', 'test')
+        .set('Accept', 'text/html')
+        .expect('Content-Type', /html/)
+        .expect(200, done);
+    });
+  })
+  
   describe('POST /upload with image JSON', function() {
     it('should respond with json', function(done) {
       request(puutWithAuth)
