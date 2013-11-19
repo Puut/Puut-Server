@@ -5,6 +5,7 @@
 
 var express = require('express')
   , routes  = require('./routes')
+  , picture = require('./routes/picture.js')
   , path    = require('path')
   , orm     = require('orm')
   , paging  = require('orm-paging');
@@ -57,18 +58,20 @@ module.exports = function(config) {
   
   if(config.useAuth) {
     app.get('/', auth, routes.index);
-    app.get('/upload', auth, routes.uploadingPage);
-    app.post('/upload', auth, routes.uploadPicture);
+    app.get('/upload', auth, routes.uploadingPage);    
     app.get('/info', auth, routes.info);
+    
+    app.post('/upload', auth, picture.uploadPicture);
   } else {
     app.get('/', routes.index);
-    app.get('/upload', routes.uploadingPage);
-    app.post('/upload', routes.uploadPicture);
+    app.get('/upload', routes.uploadingPage);    
     app.get('/info', routes.info);
+    
+    app.post('/upload', picture.uploadPicture);
   }
   
-  app.get('/:id.:format', routes.getPicture);
-  app.get('/thumb/:id.:format', routes.getThumbnail);
+  app.get('/:id.:format', picture.getPicture);
+  app.get('/thumb/:id.:format', picture.getThumbnail);
 
   return app;
 }
