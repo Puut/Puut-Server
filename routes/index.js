@@ -19,8 +19,12 @@ exports.index = function(req, res) {
         img.hashid = hashids.encrypt(img.id);
         finalImages.push(img);
       });
-    
-      res.render('index', { title: 'Puut', images: finalImages, page: page, previousPage: parseInt(page) - 1, nextPage: parseInt(page) + 1, totalPages: pages});
+      if(req.accepts("json") == "json") {
+        res.type("json");
+        res.end(page);
+      } else {
+        res.render('index', { title: 'Puut', images: finalImages, page: page, previousPage: parseInt(page) - 1, nextPage: parseInt(page) + 1, totalPages: pages});
+      }
     });
   });
   

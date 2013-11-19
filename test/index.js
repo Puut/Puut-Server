@@ -89,7 +89,6 @@ describe('GET / JSON', function() {
     request(puutWithAuth)
       .get('/')
       .set('Accept', 'application/json')
-      .expect('Content-Type', /json/)
       .expect(401, done);
   });
 
@@ -98,7 +97,6 @@ describe('GET / JSON', function() {
       .get('/')
       .set('Accept', 'application/json')
       .auth('heinz', 'peda')
-      .expect('Content-Type', /json/)
       .expect(401, done);
   });
 
