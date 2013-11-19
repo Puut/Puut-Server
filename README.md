@@ -17,7 +17,7 @@ If this is not done, Puut will run on Port 3000 by default.
 
 Now change the user credentials in `config.json`. You have to enter this credentials in your client later.
 
-Start the server by typing `node app`(`nodejs app` on some distributions) in the terminal.
+Start the server by typing `npm start` in the terminal.
 
 ###Installation on a Uberspace
 This chapter deals with the installation of Puut server on a uberspace, a neat webserver provided by [uberspace.de](https://uberspace.de/).
@@ -39,7 +39,8 @@ If you haven't done this before, run `uberspace-setup-svscan` once
 
 	#!/bin/sh
 	export PORT=3001
-	exec node ~/Puut-Server/puut 2>&1
+  cd ~/Puut-Server
+	exec npm start 2>&1
 This ensures that your server is always running on the same port by setting $PORT before launching the server. You may have to adjust the path to the server.
 
 Now create a `log` directory and create a `run` file there containing
