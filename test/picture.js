@@ -1,6 +1,7 @@
 var request = require('supertest')
   , express = require('express')
-  , common = require('./common.js');
+  , common  = require('./common.js')
+  , should = require('should');
   
 var puutWithAuth = common.puutWithAuth;
 
@@ -54,6 +55,95 @@ describe('Pictures', function() {
         .set('Accept', 'application/json')
         .expect('Content-Type', /json/)
         .expect(200, done);
+    });
+  });
+  
+  describe('POST /upload with image and GET /:id.:format with it\'s ID', function() {
+    it('should upload successfully and lateron respond with an image', function(done) {
+      request(puutWithoutAuth)
+        .post('/upload')
+        .attach('image', 'test/fixtures/screenshot.png')
+        .set('Accept', 'application/json')
+        .expect('Content-Type', /json/)
+        .expect(200, function(err, res){
+          should.not.exist(err);
+
+          var body = res.body;
+          
+          body.should.have.property('id').with.lengthOf(4);
+          
+          var id = body.id;
+          
+          request(puutWithoutAuth)
+            .get("/" + id + ".png")
+            .expect('Content-Type', /image/)
+            .expect(200, done);
+      });
+    });
+    it('should upload successfully and lateron respond with a thumbnail', function(done) {
+      request(puutWithoutAuth)
+        .post('/upload')
+        .attach('image', 'test/fixtures/screenshot.png')
+        .set('Accept', 'application/json')
+        .expect('Content-Type', /json/)
+        .expect(200, function(err, res){
+          should.not.exist(err);
+
+          var body = res.body;
+          
+          body.should.have.property('id').with.lengthOf(4);
+          
+          var id = body.id;
+          
+          request(puutWithoutAuth)
+            .get("/thumb/" + id + ".png")
+            .expect('Content-Type', /image/)
+            .expect(200, done);
+      });
+    });
+    it('should upload with auth successfully and lateron respond with an image without auth', function(done) {
+      request(puutWithAuth)
+        .post('/upload')
+        .attach('image', 'test/fixtures/screenshot.png')
+        .auth('test', 'test')
+        .set('Accept', 'application/json')
+        .expect('Content-Type', /json/)
+        .expect(200, function(err, res){
+          should.not.exist(err);
+
+          var body = res.body;
+          
+          body.should.have.property('id').with.lengthOf(4);
+          
+          var id = body.id;
+          
+          request(puutWithAuth)
+            .get("/" + id + ".png")
+            .expect('Content-Type', /image/)
+            .expect(200, done);
+      });
+    });
+    it('should upload with auth successfully and lateron respond with a thumbnail without auth', function(done) {
+      request(puutWithAuth)
+        .post('/upload')
+        .attach('image', 'test/fixtures/screenshot.png')
+        .auth('test', 'test')
+        .set('Accept', 'application/json')
+        .expect('Content-Type', /json/)
+        .expect(200, function(err, res){
+          should.not.exist(err);
+
+          var body = res.body;
+          
+          body.should.have.property('id').with.lengthOf(4);
+          
+          var id = body.id;
+          
+          request(puutWithAuth)
+            .get("/thumb/" + id + ".png")
+            .expect('Content-Type', /image/)
+            .expect(200, done);
+      });
     });
   });
 });
