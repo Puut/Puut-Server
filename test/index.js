@@ -110,4 +110,26 @@ describe('Index', function(){
         .expect(200, done);
     });
   });
+  
+  describe('GET /info', function() {
+    it('should fail without auth', function(done) {
+      request(puutWithAuth)
+        .get('/info')
+        .expect(401, done);
+    });
+
+    it('should fail with wrong auth', function(done) {
+      request(puutWithAuth)
+        .get('/info')
+        .auth('heinz', 'peda')
+        .expect(401, done);
+    });
+    
+    it('should respond with PUUT and auth', function(done) {
+      request(puutWithAuth)
+        .get('/info')
+        .auth('test', 'test')
+        .expect("PUUT", done);
+    });
+  });
 });
