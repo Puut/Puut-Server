@@ -7,6 +7,7 @@ block content
   .row
     .large-12.columns.small-centered
       .large-4.columns.small-centered
-        input(type='text', value=url, onfocus="this.select()", onMouseUp="return false", id="url")
+        input(type='text', value=id, onfocus="this.select()", onMouseUp="return false", id="url")
   script.
+    $("#url").val(window.location.origin+ "/"+$("#url").val()+".png")
     $("#url").focus();
