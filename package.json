@@ -1,17 +1,21 @@
 {
   "name": "puush-server",
   "version": "0.9.0",
-  "repository" : {
-    "type" : "git",
-    "url" : "https://github.com/Puut/Puut-Server.git"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Puut/Puut-Server.git"
   },
   "private": false,
   "scripts": {
     "start": "node puut",
     "test": "make test",
     "blanket": {
-        "pattern": ".",
-        "data-cover-never": ["node_modules", "test", "public"]
+      "pattern": ".",
+      "data-cover-never": [
+        "node_modules",
+        "test",
+        "public"
+      ]
     }
   },
   "dependencies": {
@@ -27,6 +31,8 @@
     "mocha": "~1.14",
     "supertest": "~0.8",
     "blanket": "~1.1",
-    "should": "~2.1"
+    "should": "~2.1",
+    "grunt": "~0.4.2",
+    "grunt-contrib-jshint": "~0.7.2"
   }
 }
