@@ -59,7 +59,7 @@ describe('Pictures', function() {
   });
   
   describe('POST /upload with image and GET /:id.:format with it\'s ID', function() {
-    it('should upload successfully and lateron respond with an image', function(done) {
+    it('should upload successfully and later on respond with an image', function(done) {
       request(puutWithoutAuth)
         .post('/upload')
         .attach('image', 'test/fixtures/screenshot.png')
@@ -80,7 +80,7 @@ describe('Pictures', function() {
             .expect(200, done);
       });
     });
-    it('should upload successfully and lateron respond with a thumbnail', function(done) {
+    it('should upload successfully and later on respond with a thumbnail', function(done) {
       request(puutWithoutAuth)
         .post('/upload')
         .attach('image', 'test/fixtures/screenshot.png')
