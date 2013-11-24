@@ -1,4 +1,4 @@
 test:
-	@./node_modules/.bin/mocha -R spec
+	@grunt test
 
 .PHONY: test
