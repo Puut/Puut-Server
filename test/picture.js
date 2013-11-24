@@ -101,7 +101,7 @@ describe('Pictures', function() {
             .expect(200, done);
       });
     });
-    it('should upload with auth successfully and lateron respond with an image without auth', function(done) {
+    it('should upload with auth successfully and later on respond with an image without auth', function(done) {
       request(puutWithAuth)
         .post('/upload')
         .attach('image', 'test/fixtures/screenshot.png')
@@ -123,7 +123,7 @@ describe('Pictures', function() {
             .expect(200, done);
       });
     });
-    it('should upload with auth successfully and lateron respond with a thumbnail without auth', function(done) {
+    it('should upload with auth successfully and later on respond with a thumbnail without auth', function(done) {
       request(puutWithAuth)
         .post('/upload')
         .attach('image', 'test/fixtures/screenshot.png')
