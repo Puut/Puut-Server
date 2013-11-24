@@ -31,12 +31,16 @@ exports.uploadPicture = function(req, res) {
                   res.end('error');
                 } else {
                   var finalId = hashids.encrypt(image.id);
+                  console.log("New image with id:", finalId);
                   if(req.accepts("html, json") == "json") {
                     res.type("json");
                     res.send({id: finalId});
                   } else {
-                    var url = req.protocol + "://" + req.get('host') +'/'+finalId+'.png';
-                    res.render('uploaded', {id: finalId, url:url});
+                    var url = req.protocol + "://" + req.get('host') + '/' + finalId + '.png';
+                    res.render('uploaded', {
+                      id: finalId, 
+                      url:url
+                    });
                   }
                 }
               });
@@ -48,7 +52,9 @@ exports.uploadPicture = function(req, res) {
     });
   } else {
     if(req.accepts("html, json") == "json") {
-      res.send(400, {error: 'Image is missing!' });
+      res.send(400, {
+        error: 'Image is missing!' 
+      });
     } else {
       res.send(400, 'Image is missing!');
     }
