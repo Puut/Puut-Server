@@ -2,5 +2,6 @@
   "useAuth": false,
   "username": "hanz",
   "password": "ralfried",
-  "databaseUrl": "sqlite://database.db"
+  "databaseUrl": "sqlite://database.db",
+  "port": 3000
 }
