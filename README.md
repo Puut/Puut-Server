@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/Puut/Puut-Server.png?branch=master)](https://travis-ci.org/Puut/Puut-Server)
 [![Build Status](https://drone.io/github.com/Puut/Puut-Server/status.png)](https://drone.io/github.com/Puut/Puut-Server/latest)
+[![Code Climate](https://codeclimate.com/github/Puut/Puut-Server.png)](https://codeclimate.com/github/Puut/Puut-Server)
 
 This is the Puut server. Puut is a decentral and quick screenshot sharing service. You have to deploy this on a server with the ability to run `nodejs`. It offers a small uploading interface by itself but is intended for use with the OS-specific clients you can find [here](https://github.com/Puut).
 
