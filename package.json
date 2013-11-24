@@ -8,7 +8,7 @@
   "private": false,
   "scripts": {
     "start": "node puut",
-    "test": "grunt test",
+    "test": "make test",
     "blanket": {
       "pattern": ".",
       "data-cover-never": [
