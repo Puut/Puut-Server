@@ -31,7 +31,6 @@ exports.uploadPicture = function(req, res) {
                   res.end('error');
                 } else {
                   var finalId = hashids.encrypt(image.id);
-                  console.log("New image with id:", finalId);
                   if(req.accepts("html, json") == "json") {
                     res.type("json");
                     res.send({id: finalId});
