@@ -33,6 +33,7 @@
     "blanket": "~1.1",
     "should": "~2.1",
     "grunt": "~0.4.2",
-    "grunt-contrib-jshint": "~0.7.2"
+    "grunt-contrib-jshint": "~0.7.2",
+    "grunt-mocha-test": "~0.7.0"
   }
 }
