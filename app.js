@@ -3,12 +3,12 @@
  * Module dependencies.
  */
 
-var express = require('express')
-  , routes  = require('./routes')
-  , picture = require('./routes/picture.js')
-  , path    = require('path')
-  , orm     = require('orm')
-  , paging  = require('orm-paging');
+var express = require('express'),
+  routes  = require('./routes'),
+  picture = require('./routes/picture.js'),
+  path    = require('path'),
+  orm     = require('orm'),
+  paging  = require('orm-paging');
 
 module.exports = function(config) {
   var app = express();
@@ -74,4 +74,4 @@ module.exports = function(config) {
   app.get('/thumb/:id.:format', picture.getThumbnail);
 
   return app;
-}
+};

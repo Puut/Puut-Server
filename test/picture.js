@@ -1,7 +1,7 @@
-var request = require('supertest')
-  , express = require('express')
-  , common  = require('./common.js')
-  , should = require('should');
+var request = require('supertest'),
+  express = require('express'),
+  common  = require('./common.js'),
+  should = require('should');
   
 var puutWithAuth = common.puutWithAuth;
 
@@ -44,7 +44,7 @@ describe('Pictures', function() {
         .expect('Content-Type', /html/)
         .expect(200, done);
     });
-  })
+  });
   
   describe('POST /upload with image JSON', function() {
     it('should respond with json', function(done) {

@@ -1,7 +1,7 @@
-var Hashids   = require('hashids')
-  , hashids   = new Hashids("Käsebrot", 4)
-  , fs        = require('fs')
-  , easyimage = require('easyimage');
+var Hashids   = require('hashids'),
+  hashids   = new Hashids("Käsebrot", 4),
+  fs        = require('fs'),
+  easyimage = require('easyimage');
   
 /*
  * POST an image
@@ -53,7 +53,7 @@ exports.uploadPicture = function(req, res) {
       res.send(400, 'Image is missing!');
     }
   }
-}
+};
 
 /*
  * GET an image
@@ -70,7 +70,7 @@ exports.getPicture = function(req, res) {
       res.end(image.content);
     }
   });
-}
+};
 
 /*
  * GET a thumbnail

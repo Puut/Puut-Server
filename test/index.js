@@ -1,6 +1,6 @@
-var request = require('supertest')
-  , express = require('express')
-  , common = require('./common.js');
+var request = require('supertest'),
+  express = require('express'),
+  common = require('./common.js');
   
   
 var puutWithAuth = common.puutWithAuth;

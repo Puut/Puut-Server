@@ -1,5 +1,5 @@
-var Hashids   = require('hashids')
-  , hashids   = new Hashids("Käsebrot", 4);
+var Hashids   = require('hashids'),
+  hashids   = new Hashids("Käsebrot", 4);
 
 /*
  * GET home page.
@@ -35,7 +35,7 @@ exports.index = function(req, res) {
  */
 exports.uploadingPage = function(req, res) {
   res.render('upload');
-}
+};
 
 /*
  * GET info 'bout the server
@@ -43,4 +43,4 @@ exports.uploadingPage = function(req, res) {
 
 exports.info = function(req, res) {
   res.end('PUUT');
-}
+};

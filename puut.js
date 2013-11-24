@@ -1,6 +1,6 @@
-var app     = require('./app.js')(require('./config.json'))
-  , http    = require('http')
-  , express = require('express');
+var app     = require('./app.js')(require('./config.json')),
+  http    = require('http'),
+  express = require('express');
 
 app.use(express.logger('dev'));
 

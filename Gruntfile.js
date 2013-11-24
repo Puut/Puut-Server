@@ -3,7 +3,6 @@ module.exports = function(grunt) {
   grunt.initConfig({
     jshint: {
       server: [ '*.js', 'routes/**/*.js' ],
-      client: [ 'public/**/*[!.min].js' ],
       tests: [ 'test/**/*.js' ]
     }
   });
