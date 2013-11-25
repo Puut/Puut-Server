@@ -39,7 +39,7 @@ If you haven't done this before, run `uberspace-setup-svscan` once
 
 	#!/bin/sh
 	export PORT=3001
-  cd ~/Puut-Server
+  	cd ~/Puut-Server
 	exec npm start 2>&1
 This ensures that your server is always running on the same port by setting $PORT before launching the server. You may have to adjust the path to the server.
 
